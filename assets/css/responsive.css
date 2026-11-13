@@ -1,0 +1,129 @@
+/**
+ * CINEMA BOOKING - Responsive Breakpoints & Print Engine
+ * Clean grid scaling: Desktop (4-5), Tablet (3), Mobile (2 per row)
+ */
+
+/* Extra small devices / Phones (< 576px) */
+@media (max-width: 575.98px) {
+    .cinematic-main {
+        padding-top: 68px;
+    }
+
+    .page-title {
+        font-size: 1.45rem;
+    }
+
+    .page-header-wrap {
+        padding: 20px 0 16px 0;
+        margin-bottom: 16px;
+    }
+
+    .movie-card-content {
+        padding: 10px;
+    }
+
+    .movie-title {
+        font-size: 0.875rem;
+        margin-bottom: 2px;
+    }
+
+    .movie-genre {
+        font-size: 0.725rem;
+        margin-bottom: 8px;
+    }
+
+    .btn-book-card,
+    .btn-details-card {
+        font-size: 0.75rem;
+        padding: 6px 8px;
+    }
+
+    .poster-meta-strip {
+        padding: 16px 6px 6px 6px;
+    }
+
+    .poster-rating {
+        font-size: 0.725rem;
+    }
+
+    .poster-cert {
+        font-size: 0.6rem;
+    }
+
+    /* Seat adjustments */
+    .seat {
+        width: 26px;
+        height: 25px;
+        font-size: 0.6rem;
+    }
+
+    .seat.recliner {
+        width: 29px;
+    }
+
+    .seat-row {
+        gap: 4px;
+        margin-bottom: 6px;
+    }
+
+    .row-label {
+        width: 16px;
+        font-size: 0.7rem;
+    }
+
+    .auth-card {
+        padding: 20px 16px;
+    }
+}
+
+/* Medium devices / Tablets (< 992px) */
+@media (max-width: 991.98px) {
+    .cinematic-navbar .navbar-collapse {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 16px;
+        margin-top: 10px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+    }
+
+    .nav-search-form {
+        margin: 12px 0;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body.cinematic-body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+    }
+
+    .cinematic-navbar,
+    .cinematic-footer,
+    .btn,
+    .no-print {
+        display: none !important;
+    }
+
+    .cinematic-main {
+        padding-top: 0 !important;
+    }
+
+    .cinema-ticket {
+        border: 1px solid #000000 !important;
+        background: #FFFFFF !important;
+        color: #000000 !important;
+    }
+
+    .ticket-header {
+        background: #000000 !important;
+        color: #FFFFFF !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .ticket-body {
+        color: #000000 !important;
+    }
+}

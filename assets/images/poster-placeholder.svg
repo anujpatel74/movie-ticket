@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900" fill="none">
+    <rect width="600" height="900" fill="#151922"/>
+    <rect x="2" y="2" width="596" height="896" stroke="#292E39" stroke-width="4" rx="8"/>
+    <!-- Cinema Clapper / Film Reel Icon -->
+    <g transform="translate(236, 360)">
+        <rect x="0" y="28" width="128" height="96" rx="8" fill="#1F2533" stroke="#363C4A" stroke-width="4"/>
+        <path d="M 0 28 L 128 28 L 128 0 L 0 0 Z" fill="#292E39"/>
+        <polygon points="16,0 36,0 20,28 0,28" fill="#E50945"/>
+        <polygon points="48,0 68,0 52,28 32,28" fill="#E50945"/>
+        <polygon points="80,0 100,0 84,28 64,28" fill="#E50945"/>
+        <polygon points="112,0 128,0 116,28 96,28" fill="#E50945"/>
+        <!-- Film Reel Circles -->
+        <circle cx="64" cy="76" r="22" fill="#151922" stroke="#E50945" stroke-width="3"/>
+        <circle cx="64" cy="76" r="6" fill="#E50945"/>
+    </g>
+    <!-- Text Elements -->
+    <text x="300" y="525" fill="#F5F5F5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" text-anchor="middle" letter-spacing="1">CINEMA BOOKING</text>
+    <text x="300" y="555" fill="#9CA3AF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="500" text-anchor="middle">Poster Artwork Coming Soon</text>
+</svg>
+
