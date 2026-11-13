@@ -85,7 +85,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'cance
             set_flash('success', "Booking #{$ref} was cancelled successfully. Demo refund initiated.");
         } catch (Exception $e) {
             $pdo->rollBack();
-            set_flash('danger', 'Error cancelling booking: ' . $e->getMessage());
+            error_log("Booking cancellation error: " . $e->getMessage());
+            set_flash('danger', 'Unable to cancel booking at this moment due to a technical error. Please try again.');
         }
     } else {
         set_flash('danger', 'Unauthorized or booking not found.');

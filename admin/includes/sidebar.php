@@ -46,6 +46,9 @@ $activeNav = basename($_SERVER['PHP_SELF']);
         </a>
 
         <div class="text-uppercase text-secondary fs-xs fw-bold px-3 mt-4 mb-2">System</div>
+        <a href="<?= base_url('admin/profile.php') ?>" class="nav-link <?= $activeNav === 'profile.php' ? 'active' : '' ?>">
+            <i class="bi bi-shield-lock"></i>Security & Profile
+        </a>
         <a href="<?= base_url('index.php') ?>" target="_blank" class="nav-link">
             <i class="bi bi-box-arrow-up-right"></i>Customer Site
         </a>

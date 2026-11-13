@@ -32,6 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $admin = $stmt->fetch();
 
             if ($admin && password_verify($password, $admin['password'])) {
+                // Regenerate session ID to prevent session fixation attacks
+                session_regenerate_id(true);
+
                 $_SESSION['admin_id'] = $admin['id'];
                 $_SESSION['admin_username'] = $admin['username'];
                 $_SESSION['admin_name'] = $admin['full_name'];
@@ -95,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="mb-3">
                 <label class="form-label text-white small fw-bold">Admin ID / Username</label>
-                <input type="text" name="username" id="adminUser" class="form-control bg-dark border-secondary text-white" placeholder="anujdev" autocomplete="off" required>
+                <input type="text" name="username" id="adminUser" class="form-control bg-dark border-secondary text-white" placeholder="Enter username or email" autocomplete="off" required>
             </div>
 
             <div class="mb-4">

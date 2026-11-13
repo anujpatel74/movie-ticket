@@ -142,11 +142,12 @@ function tmdb_api_request(string $endpoint, array $params = []): array {
     curl_close($ch);
 
     if ($curlErrno !== 0) {
+        error_log("TMDB API cURL Error [{$curlErrno}]: " . $curlError);
         return [
             'success'     => false,
             'status_code' => $httpCode ?: 500,
             'data'        => null,
-            'error'       => 'TMDB network connection error: ' . $curlError
+            'error'       => 'Movie service currently unavailable. Please try again later.'
         ];
     }
 

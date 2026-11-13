@@ -59,6 +59,11 @@ $currentAdmin = current_admin();
                             <small class="text-secondary"><?= htmlspecialchars($currentAdmin['email'] ?? 'admin@cinemabooking.com') ?></small>
                         </li>
                         <li>
+                            <a class="dropdown-item py-2 text-light" href="<?= base_url('admin/profile.php') ?>">
+                                <i class="bi bi-shield-lock me-2 text-warning"></i>Security & Profile
+                            </a>
+                        </li>
+                        <li>
                             <a class="dropdown-item py-2 text-danger" href="<?= base_url('admin/logout.php') ?>">
                                 <i class="bi bi-box-arrow-right me-2"></i>Sign Out
                             </a>

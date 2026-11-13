@@ -1,0 +1,48 @@
+# ========================================================
+# CINEMA BOOKING - Git Ignore Configuration
+# Production Security & Clean Workspace Policy
+# ========================================================
+
+# Sensitive credentials & session tokens
+admin_cookie.txt
+*.cookie
+*.cookie.txt
+sess_*
+sessions/
+
+# Environment files (never commit secrets)
+.env
+.env.*
+!.env.example
+
+# Database backups, dumps, and scratch exports
+database/backups/
+database/*.bak
+database/*.dump
+*.sql.bak
+
+# Server and error logs
+*.log
+logs/
+error_log
+
+# Temporary and scratch files
+tmp/
+temp/
+scratch/
+
+# Operating system and editor artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.suo
+*.user
+*.sublime-workspace
+*.sublime-project
+
+# Dependencies (if Composer or npm are used in future)
+vendor/
+node_modules/
+

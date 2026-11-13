@@ -1,6 +1,14 @@
--- CINEMA BOOKING Database Schema & Seed Data
+-- CINEMA BOOKING Database Schema & Development Seed Data
 -- Full-Stack Movie Ticket Booking System
--- Compatible with MySQL 5.7+ / 8.0+ / MariaDB (XAMPP & InfinityFree / Free Hosting)
+--
+-- IMPORTANT SAFETY NOTICE:
+-- This file is intended ONLY for initial fresh installation in a local development environment (e.g. XAMPP).
+-- It contains destructive DROP TABLE statements to facilitate clean local resets.
+-- NEVER execute this file on a live production database!
+-- For production deployments and schema updates, use the non-destructive migration runner:
+--   php database/migrate.php
+--
+-- Compatible with MySQL 5.7+ / 8.0+ / MariaDB (XAMPP & Cloud MySQL)
 
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -228,7 +236,9 @@ SET FOREIGN_KEY_CHECKS = 1;
 -- SEED DATA
 -- ========================================================
 
--- 1. Admin (Username: anujdev / Password: 10june)
+-- 1. Development Demo Admin (FOR LOCAL TESTING ONLY: Username: anujdev / Password: 10june)
+-- In production deployments, administrators MUST be created using: php bin/admin-cli.php create
+-- To reset this admin password, run: php bin/admin-cli.php reset-password --username=anujdev --password="YourNewPassword"
 INSERT INTO `admins` (`id`, `username`, `full_name`, `email`, `password`, `role`, `status`) VALUES
 (1, 'anujdev', 'Anuj Dev', 'anujdev@cinemabooking.com', '$2y$10$tC1JLMtoveIf6iSAhMdPpud.SCvB5QBJp5/qbzmvBQU5uQIHEJdmy', 'superadmin', 'active');
 

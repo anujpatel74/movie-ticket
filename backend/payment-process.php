@@ -166,7 +166,8 @@ try {
         redirect(base_url("seats.php?show_id={$checkout['show_id']}"));
     }
 
-    set_flash('danger', 'Payment processing failed: ' . $e->getMessage());
+    error_log("Payment processing database exception: " . $e->getMessage() . " (Code: " . $e->getCode() . ")");
+    set_flash('danger', 'Payment processing encountered an unexpected system error. Please retry your purchase.');
     redirect(base_url('payment.php'));
 }
 

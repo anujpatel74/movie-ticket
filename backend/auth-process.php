@@ -37,6 +37,9 @@ switch ($action) {
                 redirect(base_url('login.php'));
             }
 
+            // Regenerate session ID to prevent fixation attacks
+            session_regenerate_id(true);
+
             // Set user session
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['full_name'];
@@ -89,14 +92,17 @@ switch ($action) {
             redirect(base_url('login.php'));
         }
 
-        // Hash password securely
-        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+        // Hash password securely with PASSWORD_DEFAULT
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $stmt = $pdo->prepare("INSERT INTO users (full_name, email, phone, password, role, status) VALUES (?, ?, ?, ?, 'user', 'active')");
         $success = $stmt->execute([$fullName, $email, $phone, $hashedPassword]);
 
         if ($success) {
             $newUserId = $pdo->lastInsertId();
+            // Regenerate session ID for newly created authenticated user
+            session_regenerate_id(true);
+
             $_SESSION['user_id'] = $newUserId;
             $_SESSION['user_name'] = $fullName;
             $_SESSION['user_email'] = $email;

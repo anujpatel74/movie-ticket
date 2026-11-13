@@ -43,9 +43,10 @@ try {
         json_response(['success' => false, 'message' => 'Unknown action'], 400);
     }
 } catch (Exception $e) {
+    error_log("Seat retrieval exception: " . $e->getMessage());
     json_response([
         'success' => false, 
-        'message' => 'Server error retrieving seats: ' . $e->getMessage()
+        'message' => 'Unable to retrieve seat availability at this moment.'
     ], 500);
 }
 

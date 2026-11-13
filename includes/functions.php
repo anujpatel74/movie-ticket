@@ -3,8 +3,31 @@
  * CINEMA BOOKING - Helper & Utility Functions
  */
 
-if (session_status() === PHP_SESSION_NONE) {
-    // Set secure session parameters
+if (php_sapi_name() !== 'cli' && session_status() === PHP_SESSION_NONE) {
+    // Detect HTTPS (including reverse proxies like Railway, Cloudflare, AWS)
+    $isHttps = (
+        (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off') ||
+        (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https') ||
+        (!empty($_SERVER['SERVER_PORT']) && (int)$_SERVER['SERVER_PORT'] === 443)
+    );
+
+    // Set secure session cookie parameters
+    if (PHP_VERSION_ID >= 70300) {
+        session_set_cookie_params([
+            'lifetime' => 0,
+            'path'     => '/',
+            'domain'   => '',
+            'secure'   => $isHttps,
+            'httponly' => true,
+            'samesite' => 'Lax'
+        ]);
+    } else {
+        session_set_cookie_params(0, '/; samesite=Lax', '', $isHttps, true);
+    }
+
+    ini_set('session.use_only_cookies', '1');
+    ini_set('session.use_strict_mode', '1');
+
     session_start();
 }
 
@@ -183,6 +206,9 @@ function current_user(): ?array {
 
 function logout_user(): void {
     unset($_SESSION['user_id'], $_SESSION['user_name'], $_SESSION['user_email'], $_SESSION['user_role']);
+    if (session_status() === PHP_SESSION_ACTIVE) {
+        session_regenerate_id(true);
+    }
 }
 
 /**
@@ -205,6 +231,9 @@ function current_admin(): ?array {
 
 function logout_admin(): void {
     unset($_SESSION['admin_id'], $_SESSION['admin_username'], $_SESSION['admin_name'], $_SESSION['admin_email'], $_SESSION['admin_role']);
+    if (session_status() === PHP_SESSION_ACTIVE) {
+        session_regenerate_id(true);
+    }
 }
 
 /**
