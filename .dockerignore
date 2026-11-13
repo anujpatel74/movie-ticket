@@ -1,0 +1,42 @@
+# ========================================================
+# CINEMA BOOKING - Docker Build Context Ignore List
+# Keeps the production container lightweight and secure
+# ========================================================
+
+# Version control & local git
+.git
+.gitignore
+.dockerignore
+
+# Secrets and local environments
+.env
+.env.*
+admin_cookie.txt
+*.cookie
+*.cookie.txt
+
+# Database backups, dumps, and scratch exports
+database/backups/
+database/*.bak
+database/*.dump
+*.sql.bak
+
+# Server and runtime logs
+*.log
+logs/
+error_log
+
+# Scratch, temp, and test files
+tmp/
+temp/
+scratch/
+
+# IDE and OS metadata
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.suo
+*.user
+
